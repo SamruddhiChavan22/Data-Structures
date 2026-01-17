@@ -1,0 +1,124 @@
+#include <iostream>
+using namespace std;
+
+int main()
+{
+    int i, a[10], b[5], c[15];
+    int n = 5, ch, pos, value;
+    int sum = 0, sub = 0;
+    char x;
+
+    do
+    {
+        cout << "\n1. Create";
+        cout << "\n2. Display";
+        cout << "\n3. Sum";
+        cout << "\n4. Subtraction";
+        cout << "\n5. Insertion";
+        cout << "\n6. Deletion";
+        cout << "\n7. Updating";
+        cout << "\n8. Merging";
+        cout << "\nEnter your choice: ";
+        cin >> ch;
+
+        switch (ch)
+        {
+        case 1:
+            cout << "Enter " << n << " array elements:\n";
+            for (i = 0; i < n; i++)
+                cin >> a[i];
+            break;
+
+        case 2:
+            cout << "Array is: ";
+            for (i = 0; i < n; i++)
+                cout << a[i] << " ";
+            break;
+
+        case 3:
+            sum = 0;
+            for (i = 0; i < n; i++)
+                sum = sum + a[i];
+            cout << "\nAddition is: " << sum;
+            break;
+
+        case 4:
+            sub = a[0];
+            for (i = 1; i < n; i++)
+                sub = sub - a[i];
+            cout << "\nSubtraction is: " << sub;
+            break;
+
+        case 5:
+            cout << "Enter position and value: ";
+            cin >> pos >> value;
+
+            if (pos >= 0 && pos <= n)
+            {
+                for (i = n; i > pos; i--)
+                    a[i] = a[i - 1];
+
+                a[pos] = value;
+                n++;
+            }
+
+            cout << "After insertion: ";
+            for (i = 0; i < n; i++)
+                cout << a[i] << " ";
+            break;
+
+        case 6:
+            cout << "Enter position to delete: ";
+            cin >> pos;
+
+            if (pos >= 0 && pos < n)
+            {
+                for (i = pos; i < n - 1; i++)
+                    a[i] = a[i + 1];
+                n--;
+            }
+
+            cout << "After deletion: ";
+            for (i = 0; i < n; i++)
+                cout << a[i] << " ";
+            break;
+
+        case 7:
+            cout << "Enter index and new value: ";
+            cin >> pos >> value;
+
+            if (pos >= 0 && pos < n)
+                a[pos] = value;
+
+            cout << "After updating: ";
+            for (i = 0; i < n; i++)
+                cout << a[i] << " ";
+            break;
+
+        case 8:
+            cout << "Enter 5 elements for second array:\n";
+            for (i = 0; i < 5; i++)
+                cin >> b[i];
+
+            for (i = 0; i < n; i++)
+                c[i] = a[i];
+
+            for (i = 0; i < 5; i++)
+                c[n + i] = b[i];
+
+            cout << "Merged Array: ";
+            for (i = 0; i < n + 5; i++)
+                cout << c[i] << " ";
+            break;
+
+        default:
+            cout << "Invalid choice!";
+        }
+
+        cout << "\nDo you want to continue (y/n): ";
+        cin >> x;
+
+    } while (x == 'y' || x == 'Y');
+
+    return 0;
+}
