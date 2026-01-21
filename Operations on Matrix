@@ -1,0 +1,157 @@
+#include <iostream>
+using namespace std;
+
+int main() {
+    int r1, c1, r2, c2;
+    int A[10][10], B[10][10];
+    int C[10][10];
+    int choice;
+
+    do {
+        cout << "\n MATRIX OPERATIONS \n";
+        cout << "1. Input & Display Matrix\n";
+        cout << "2. Addition of Matrices\n";
+        cout << "3. Subtraction of Matrices\n";
+        cout << "4. Multiplication of Matrices\n";
+        cout << "5. Transpose of Matrix\n";
+        cout << "6. Exit\n";
+        cout << "Enter your choice: ";
+        cin >> choice;
+
+        switch(choice) {
+
+        case 1:
+            cout << "Enter rows and columns: ";
+            cin >> r1 >> c1;
+
+            cout << "Enter matrix elements:\n";
+            for(int i=0;i<r1;i++)
+                for(int j=0;j<c1;j++)
+                    cin >> A[i][j];
+
+            cout << "Matrix:\n";
+            for(int i=0;i<r1;i++) {
+                for(int j=0;j<c1;j++)
+                    cout << A[i][j] << " ";
+                cout << endl;
+            }
+            break;
+
+        case 2:
+            cout << "Enter rows and columns: ";
+            cin >> r1 >> c1;
+
+            cout << "Enter first matrix:\n";
+            for(int i=0;i<r1;i++)
+                for(int j=0;j<c1;j++)
+                    cin >> A[i][j];
+
+            cout << "Enter second matrix:\n";
+            for(int i=0;i<r1;i++)
+                for(int j=0;j<c1;j++)
+                    cin >> B[i][j];
+
+            for(int i=0;i<r1;i++)
+                for(int j=0;j<c1;j++)
+                    C[i][j] = A[i][j] + B[i][j];
+
+            cout << "Addition result:\n";
+            for(int i=0;i<r1;i++) {
+                for(int j=0;j<c1;j++)
+                    cout << C[i][j] << " ";
+                cout << endl;
+            }
+            break;
+
+        case 3:
+            cout << "Enter rows and columns: ";
+            cin >> r1 >> c1;
+
+            cout << "Enter first matrix:\n";
+            for(int i=0;i<r1;i++)
+                for(int j=0;j<c1;j++)
+                    cin >> A[i][j];
+
+            cout << "Enter second matrix:\n";
+            for(int i=0;i<r1;i++)
+                for(int j=0;j<c1;j++)
+                    cin >> B[i][j];
+
+            for(int i=0;i<r1;i++)
+                for(int j=0;j<c1;j++)
+                    C[i][j] = A[i][j] - B[i][j];
+
+            cout << "Subtraction result:\n";
+            for(int i=0;i<r1;i++) {
+                for(int j=0;j<c1;j++)
+                    cout << C[i][j] << " ";
+                cout << endl;
+            }
+            break;
+
+        case 4:
+            cout << "Enter rows and columns of first matrix: ";
+            cin >> r1 >> c1;
+
+            cout << "Enter rows and columns of second matrix: ";
+            cin >> r2 >> c2;
+
+            if(c1 != r2) {
+                cout << "Matrix multiplication not possible\n";
+                break;
+            }
+
+            cout << "Enter first matrix:\n";
+            for(int i=0;i<r1;i++)
+                for(int j=0;j<c1;j++)
+                    cin >> A[i][j];
+
+            cout << "Enter second matrix:\n";
+            for(int i=0;i<r2;i++)
+                for(int j=0;j<c2;j++)
+                    cin >> B[i][j];
+
+            for(int i=0;i<r1;i++)
+                for(int j=0;j<c2;j++) {
+                    C[i][j] = 0;
+                    for(int k=0;k<c1;k++)
+                        C[i][j] += A[i][k] * B[k][j];
+                }
+
+            cout << "Multiplication result:\n";
+            for(int i=0;i<r1;i++) {
+                for(int j=0;j<c2;j++)
+                    cout << C[i][j] << " ";
+                cout << endl;
+            }
+            break;
+
+        case 5:
+            cout << "Enter rows and columns: ";
+            cin >> r1 >> c1;
+
+            cout << "Enter matrix:\n";
+            for(int i=0;i<r1;i++)
+                for(int j=0;j<c1;j++)
+                    cin >> A[i][j];
+
+            cout << "Transpose of matrix:\n";
+            for(int j=0;j<c1;j++) {
+                for(int i=0;i<r1;i++)
+                    cout << A[i][j] << " ";
+                cout << endl;
+            }
+            break;
+
+        case 6:
+            cout << "Exiting program.";
+            break;
+
+        default:
+            cout << "Invalid choice!";
+        }
+
+    } while(choice != 6);
+
+    return 0;
+}
