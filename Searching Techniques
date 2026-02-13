@@ -1,0 +1,59 @@
+#include<iostream>
+using namespace std;
+
+int main() {
+    int a[5] = {10,20,30,40,50};
+    int choice, val;
+    int pos = -1;
+
+    cout << "Menu:\n";
+    cout << "1. Linear Search\n";
+    cout << "2. Binary Search\n";
+    cout << "Enter your choice: ";
+    cin >> choice;
+
+    cout << "Enter value to search: ";
+    cin >> val;
+
+    switch(choice) {
+        case 1:   
+            for(int i = 0; i < 5; i++) {
+                if(a[i] == val) {
+                    cout << "Value found at index " << i;
+                    pos = i;
+                    break;
+                }
+            }
+            if(pos == -1) {
+                cout << "Value not found";
+            }
+            break;
+
+        case 2:   
+        {
+            int beg = 0, end = 4, mid;
+            while(beg <= end) {
+                mid = (beg + end) / 2;
+
+                if(a[mid] == val) {
+                    cout << "Value found at index " << mid;
+                    pos = mid;
+                    break;
+                }
+                else if(a[mid] > val)
+                    end = mid - 1;
+                else
+                    beg = mid + 1;
+            }
+            if(pos == -1) {
+                cout << "Value not found";
+            }
+            break;
+        }
+
+        default:
+            cout << "Invalid choice";
+    }
+
+    return 0;
+}
