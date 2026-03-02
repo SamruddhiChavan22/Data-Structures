@@ -1,0 +1,67 @@
+#include<iostream>
+using namespace std;
+
+#define MAX 5
+
+int stack[MAX];
+int top = -1;
+
+void push() {
+    int val;
+    if(top == MAX-1) {
+        cout<<"Stack is Full (Overflow)";
+    }
+    else {
+        cout<<"Enter value: ";
+        cin>>val;
+        top++;
+        stack[top] = val;
+        cout<<"Value pushed";
+    }
+}
+
+void pop() {
+    if(top == -1) {
+        cout<<"Stack is Empty (Underflow)";
+    }
+    else {
+        cout<<"Deleted element = "<<stack[top];
+        top--;
+    }
+}
+
+void display() {
+    if(top == -1) {
+        cout<<"Stack is Empty";
+    }
+    else {
+        cout<<"Stack elements are: ";
+        for(int i=top;i>=0;i--)
+            cout<<stack[i]<<" ";
+    }
+}
+
+int main() {
+    int ch;
+
+    do {
+        cout<<"\n\n--- STACK MENU ---";
+        cout<<"\n1. Push";
+        cout<<"\n2. Pop";
+        cout<<"\n3. Display";
+        cout<<"\n4. Exit";
+        cout<<"\nEnter your choice: ";
+        cin>>ch;
+
+        switch(ch) {
+            case 1: push(); break;
+            case 2: pop(); break;
+            case 3: display(); break;
+            case 4: cout<<"Exiting..."; break;
+            default: cout<<"Invalid choice";
+        }
+
+    } while(ch != 4);
+
+    return 0;
+}
